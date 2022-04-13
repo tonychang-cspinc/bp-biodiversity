@@ -1,0 +1,30 @@
+# Details in order to fetch the docker image used
+# docker registry login name
+username: ""
+# docker registry login password
+password: ""
+
+# Paths and details to access input data
+# only include if model uses naip data, should be a url with a Shared Access Signature
+naip_path: ""
+
+# only include if model uses hls data, should be a url with a Shared Access Signature
+hls_path: ""
+
+# only include if model uses daymet data, should be a az:// blob storage path
+daymet_path: "az://fia/daymet/samples"
+
+# only include if model uses nasadem data, should be a az:// blob storage path
+dem_path: "az://fia/nasadem"
+
+# Will be automatically populated by STRG_ACCOUNT_... environment variables
+# Set explicitly if desired
+# Azure blob storage account
+storage_account: ""
+# Azure blob storage account key for the given storage_account
+account_key: ""
+
+
+# prediction parameters. should be a az:// blob storage path, i.e. az://fia/hls
+hls_tiles_path: ""
+daymet_na_path: ""

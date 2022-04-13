@@ -1,0 +1,20 @@
+node_count: 3
+use_gpu: True
+forest_only: False
+model: AuxNet
+learning_rate: 0.0001
+epochs: 5
+batch_size: 32
+seed: 1
+test_percent: 0.1
+holdout_percent: 0.1
+learning_schedule_gamma: 0.1
+learning_schedule_epochs: 20
+ecocode_prefixes: ['-24', '-26', 'M24', 'M26']
+classify: True
+regression_vars: ['BASAL_AREA', 'BIO_ACRE', 'CANOPY_CVR']
+hls_size: 4
+naip_size: 128
+normalization: 'standard-score'
+regression_loss: MSELoss
+class_loss: CrossEntropyLoss

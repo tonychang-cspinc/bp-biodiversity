@@ -1,0 +1,19 @@
+node_count: 3
+use_gpu: True
+forest_only: False
+model: FullNet
+learning_rate: 0.0001
+epochs: 40
+batch_size: 32
+seed: 1
+test_percent: 0.1
+holdout_percent: 0.2
+learning_schedule_gamma: 0.5
+learning_schedule_epochs: 5
+ecocode_prefixes: ['-23', '-41', 'M23']
+classify: True
+regression_vars: ['BASAL_AREA', 'BIO_ACRE', 'CANOPY_CVR']
+hls_size: 4
+naip_size: 128
+regression_loss: MSELoss
+class_loss: CrossEntropyLoss

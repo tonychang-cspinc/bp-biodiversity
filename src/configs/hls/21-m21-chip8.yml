@@ -1,0 +1,19 @@
+node_count: 3
+use_gpu: True
+forest_only: False
+model: HLSNet
+learning_rate: 0.0003
+epochs: 80
+batch_size: 32
+seed: 1
+test_percent: 0.1
+holdout_percent: 0.2
+learning_schedule_gamma: 0.5
+learning_schedule_epochs: 10
+ecocode_prefixes: ['-21', 'M21']
+classify: True
+regression_vars: ['BASAL_AREA', 'BIO_ACRE', 'CANOPY_CVR']
+hls_size: 8
+normalization: feature-scaling
+regression_loss: MSELoss
+class_loss: CrossEntropyLoss

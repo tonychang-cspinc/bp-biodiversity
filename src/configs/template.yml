@@ -1,0 +1,82 @@
+# This template specifies all the param options for training FD nets
+
+#### REQUIRED PARAMS ####
+
+# how many nodes (machines) to train on in parallel
+node_count: 3
+
+# whether to use gpu for cpu for training
+use_gpu: True
+
+# whether to limit to labeled data with the PLOT_STATUS of "Forest"
+forest_only: False
+
+# model name to train
+model: AuxNet
+
+# starting learning rate
+learning_rate: 0.0001
+
+# how many epochs to train for
+epochs: 40
+
+# batch size
+batch_size: 32
+
+# what percent of the data set to withhold for testing
+test_percent: 0.2
+
+# holdout_percent and folds are mutually exclusive - pick one to include
+holdout_percent: 0.2
+folds: 5
+
+# The random seed to use for all random functions in torch, np, random packages
+seed: 1
+
+# The regression variables to train on (options: TPA, BASAL_AREA, CANOPY_CVR, CARB_ACRE, BIO_ACRE)
+regression_vars: []
+
+# Whether to learn to classify the CLASS of the plot
+classify: True
+
+### loss functions
+
+# options are: MSELoss, WeightedMSELoss (class-weighted)
+regression_loss: MSELoss
+
+# options are: CrossEntropyLoss, WeightedCrossEntropyLoss (class-weighted)
+class_loss: CrossEntropyLoss
+
+#### OPTIONAL PARAMS ####
+
+# if you want to reduce learning_rate over time include the two configs below
+# ref: torch.optim.lr_scheduler.StepLR
+learning_schedule_gamma: 0.1
+learning_schedule_epochs: 20
+
+# include state_codes if you want to limit the dataset to a subset of states
+# ref: https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code#FIPS_state_codes
+# mutually exclusive with ecoregions
+state_codes: []
+
+# include ecoregions if you want to limit the dataset to a subset of ecoregions
+# ref: https://www.fs.usda.gov/rmrs/ecoregions-united-states
+# example: ['M', '-21'] filters to all those ecocodes that match M* or -21*
+ecocode_prefixes: []
+
+# include classes if you want to limit the dataset to a subset of classes
+# must be a list of integers in range [0,4]
+# 0 = None, 1 = Conifer, 2 = Deciduous, 3 = Mixed, 4 = Dead
+# example: [1, 2] filters to samples that are Conifer or Deciduous
+classes: []
+
+# if you want to normalize the output regression variables then include this parameter
+# Options are 'feature-scaling' (scales vars to [0-1]) and 'standard-score' (x - mean / stddev)
+# Do not include if you don't want to normalize
+normalization: 'feature-scaling'
+
+# size for each hls chip (must be even and in the range [2, 32]) default is 32
+hls_size: 32
+
+# size for each NAIP chip (must be even and in the range [2, 256]) default is 256
+naip_size: 256
